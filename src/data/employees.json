@@ -5,15 +5,10 @@
     "firstName",
     "title",
     "titleOfCourtesy",
-    "birthDate",
-    "hireDate",
-    "address",
     "city",
     "region",
     "postalCode",
     "country",
-    "homePhone",
-    "extension",
     "reportsTo"
   ],
   "rows": [
