@@ -32,7 +32,7 @@ const emit = defineEmits(["update:modelValue"]);
 const inputValue = computed({
   get() {
     return (
-      props.modelValue || (props.defaultFirst ? props.options[0].value : "")
+      props.modelValue || (props.defaultFirst ? props.options[0]?.value : "")
     );
   },
   set(newVal) {

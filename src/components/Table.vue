@@ -7,7 +7,7 @@
             v-for="(field, index) in fields"
             :key="index"
             :class="[
-              'bg-white  text-left border-b border-neutral-300 text-sm text-neutral-500 py-3 px-2',
+              'bg-white  text-left border-b border-neutral-300 text-sm text-neutral-500 py-3 px-2 whitespace-nowrap',
               field?.thClass,
             ]"
           >

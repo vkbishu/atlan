@@ -1,10 +1,18 @@
 <template>
-  <div class="filters flex items-center gap-2 p-2 bg-white border-b shadow">
-    <BaseSelect :options="columns" class="w-[20%]" />
-    <BaseSelect :options="operations" class="w-[20%]" />
-    <BaseInput placeholder="Enter value..." class="grow" />
+  <div class="filters flex items-center gap-2 p-2">
+    <BaseSelect :options="columns" class="w-[20%]" v-model="filter.column" />
+    <BaseSelect
+      :options="operations"
+      class="w-[20%]"
+      v-model="filter.operation"
+    />
+    <BaseInput
+      placeholder="Enter value..."
+      class="grow"
+      v-model="filter.term"
+    />
 
-    <button class="hover:bg-neutral-200 p-3 rounded-full">
+    <button class="hover:bg-neutral-200 p-3 rounded-full" @click="handleSearch">
       <IconSearch class="w-[20px]" />
     </button>
     <Popover class="relative">
@@ -44,12 +52,12 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(["columnChange"]);
+const emit = defineEmits(["columnChange", "filter"]);
 const columnValue = ref([]);
 const operations = [
   {
     text: "EQUAL TO",
-    value: "=",
+    value: "==",
   },
   {
     text: "GREATER THAN",
@@ -68,6 +76,20 @@ const operations = [
     value: "<=",
   },
 ];
+
+const filter = ref({
+  column: "",
+  operation: "",
+  term: "",
+});
+
+const handleSearch = () => {
+  emit("filter", {
+    column: filter.value.column || props.columns[0]?.value,
+    operation: filter.value.operation || "==",
+    term: filter.value.term,
+  });
+};
 
 watch(
   () => props.columns,

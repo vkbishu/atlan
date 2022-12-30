@@ -2,19 +2,21 @@
   <CollapsablePanel :title="title">
     <ul>
       <li
-        v-for="(entity, index) in store.entities"
-        :key="index"
+        v-for="item in store.savedQueries"
+        :key="item.id"
         class="pb-2 text-sm text-neutral-500 flex items-center justify-between"
       >
         <div
           class="cursor-pointer hover:underline"
-          @click="sqlStore.showQueryResult(entity)"
+          @click="sqlStore.showQueryResult(item)"
         >
           <IconTable class="w-4 inline-block mr-2" />
-          <span> {{ entity.name }} ({{ entity.recordTotal }}) </span>
+          <span>
+            {{ item.name }}
+          </span>
         </div>
-        <button @click="entity.pinned = !entity.pinned">
-          <IconPin :class="['w-[10px]', { 'fill-blue-500': entity.pinned }]" />
+        <button @click="store.removeSavedQuery(item.id)">
+          <IconClose class="w-[10px]" />
         </button>
       </li>
     </ul>
@@ -23,12 +25,12 @@
 
 <script setup>
 import { computed } from "vue";
-import { useEntityStore } from "../../stores/entity";
+import { useSavedStore } from "../../stores/saved";
 import { useSqlStore } from "../../stores/sql";
 import CollapsablePanel from "../CollapsablePanel.vue";
-import IconPin from "../icons/IconPin.vue";
+import IconClose from "../icons/IconClose.vue";
 import IconTable from "../icons/IconTable.vue";
-const store = useEntityStore();
+const store = useSavedStore();
 const sqlStore = useSqlStore();
-const title = computed(() => `ENTITIES (${store.entitiesCount})`);
+const title = computed(() => `SAVED (${store.savedQueriesCount})`);
 </script>

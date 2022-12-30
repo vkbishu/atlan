@@ -22,31 +22,37 @@ export function getEntities() {
     {
       name: "customers",
       query: "select * from customers",
+      recordTotal: 91,
       pinned: false,
     },
     {
       name: "employees",
       query: "select * from employees",
+      recordTotal: 9,
       pinned: false,
     },
     {
       name: "orders",
       query: "select * from orders",
+      recordTotal: 830,
       pinned: false,
     },
     {
       name: "products",
       query: "select * from products",
+      recordTotal: 77,
       pinned: false,
     },
     {
       name: "suppliers",
       query: "select * from suppliers",
+      recordTotal: 29,
       pinned: false,
     },
     {
       name: "territories",
       query: "select * from territories",
+      recordTotal: 53,
       pinned: false,
     },
   ];
