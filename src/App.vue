@@ -1,5 +1,11 @@
 <template>
-  <div class="wrapper w-screen h-screen flex">
+  <div
+    :class="[
+      'wrapper w-screen h-screen flex',
+      { 'cursor-row-resize': isDragging },
+    ]"
+    @mouseup="endDragging()"
+  >
     <div class="sidebar h-100 basis-[250px] border-r shrink-0">
       <!-- database list -->
       <div class="database px-3 py-2" v-once>
@@ -11,13 +17,7 @@
       <EntityStore />
       <SavedQuery />
     </div>
-    <main
-      :class="[
-        'main grow flex flex-col h-full overflow-auto',
-        { 'cursor-row-resize': isDragging },
-      ]"
-      @mouseup="endDragging()"
-    >
+    <main class="main grow flex flex-col h-full overflow-auto">
       <div
         class="sql-query border-b grow-0 shrink-0"
         :style="{ height: `${editorHeight}%` }"
@@ -45,11 +45,11 @@ import SavedQuery from "./components/store/SavedQuery.vue";
 
 const editorHeight = ref(25);
 const isDragging = ref(false);
+
 const handleDragging = (e) => {
-  console.log(e.pageY);
   const percentage = (e.pageY / window.innerHeight) * 100;
 
-  if (e.pageY >= 100 && percentage <= 60) {
+  if (e.pageY >= 100 && percentage <= 80) {
     editorHeight.value = percentage.toFixed(2);
   }
 };

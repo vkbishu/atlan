@@ -56,7 +56,7 @@ const emit = defineEmits(["columnChange", "filter"]);
 const columnValue = ref([]);
 const operations = [
   {
-    text: "EQUAL TO",
+    text: "EQUAL",
     value: "==",
   },
   {
