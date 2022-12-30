@@ -95,6 +95,11 @@ watch(
   () => props.columns,
   (newVal) => {
     columnValue.value = newVal.map((item) => item.value);
+    filter.value = {
+      column: "",
+      operation: "",
+      term: "",
+    };
   },
   { immediate: true }
 );
