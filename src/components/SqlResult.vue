@@ -112,7 +112,7 @@ const pageCount = computed(() => {
 watch(
   () => store.columns,
   () => {
-    // reset pagination and filter
+    // reset pagination and filter on query change
     currentPage.value = 1;
     filterValue.value = {};
   }

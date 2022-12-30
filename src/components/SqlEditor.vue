@@ -150,17 +150,18 @@ const store = useSqlStore();
 const { saveQuery } = useSavedStore();
 
 const queryName = ref("");
-
-const handleSave = () => {
-  saveQuery({ name: queryName.value, id: Date.now(), query: store.query });
-  queryName.value = "";
-  closeModal();
-};
 const isOpen = ref(false);
+
 const closeModal = () => {
   isOpen.value = false;
 };
 const openModal = () => {
   isOpen.value = true;
+};
+
+const handleSave = () => {
+  saveQuery({ name: queryName.value, id: Date.now(), query: store.query });
+  queryName.value = "";
+  closeModal();
 };
 </script>
