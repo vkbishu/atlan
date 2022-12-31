@@ -25,7 +25,7 @@
         <SqlEditor />
       </div>
       <div
-        class="h-1 bg-neutral-300 cursor-row-resize"
+        class="h-1 bg-neutral-300 cursor-row-resize hover:bg-neutral-400"
         @mousedown="startDragging"
       ></div>
       <div class="sql-runner grow overflow-auto w-full">

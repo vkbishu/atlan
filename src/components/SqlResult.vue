@@ -32,7 +32,7 @@
       </div>
     </div>
 
-    <Table :fields="tableColumns" :items="paginatedResult" />
+    <Table :fields="tableColumns" :items="paginatedItems" />
   </div>
 </template>
 
@@ -42,6 +42,7 @@ import Paginate from "vuejs-paginate-next";
 import Table from "./Table.vue";
 import SqlFilter from "./SqlFilter.vue";
 import { useSqlStore } from "../stores/sql";
+import usePagination from "../composables/pagination";
 
 const store = useSqlStore();
 const visibleColumns = ref([]);
@@ -78,36 +79,21 @@ const tableResults = computed(() => {
   });
 });
 
+/**
+ *  Pagination
+ */
 const currentPage = ref(1);
-const perPage = 20;
+const perPage = ref(20);
+
 const updatePage = (page) => {
   currentPage.value = page;
 };
-const paginatedResult = computed(() => {
-  return tableResults.value.slice(
-    paginationInfo.value.offset,
-    paginationInfo.value.limit
-  );
-});
 
-const paginationInfo = computed(() => {
-  const offset = (currentPage.value - 1) * perPage;
-  const limit = offset + perPage;
-  const resultTotal = tableResults.value.length;
-  const startText = offset + 1;
-  const endText = limit > resultTotal ? resultTotal : limit;
-  return {
-    offset,
-    limit,
-    startText,
-    endText,
-    resultTotal,
-  };
-});
-
-const pageCount = computed(() => {
-  return Math.ceil(paginationInfo.value.resultTotal / perPage);
-});
+const { paginationInfo, paginatedItems, pageCount } = usePagination(
+  tableResults,
+  currentPage,
+  perPage
+);
 
 watch(
   () => store.columns,
