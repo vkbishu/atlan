@@ -13,7 +13,7 @@
           <option value="">Demo Database</option>
         </select>
       </div>
-      <PinnedEntityStore />
+      <PinnedEntity />
       <EntityStore />
       <SavedQuery />
     </div>
@@ -37,10 +37,10 @@
 
 <script setup>
 import { ref } from "vue";
-import SqlEditor from "./components/SqlEditor.vue";
-import SqlResult from "./components/SqlResult.vue";
+import SqlEditor from "./components/sql/SqlEditor.vue";
+import SqlResult from "./components/sql/SqlResult.vue";
 import EntityStore from "./components/store/EntityStore.vue";
-import PinnedEntityStore from "./components/store/PinnedEntityStore.vue";
+import PinnedEntity from "./components/store/PinnedEntity.vue";
 import SavedQuery from "./components/store/SavedQuery.vue";
 
 const editorHeight = ref(25);

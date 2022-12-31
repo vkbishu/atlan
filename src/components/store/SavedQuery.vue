@@ -10,7 +10,7 @@
           class="cursor-pointer hover:underline"
           @click="sqlStore.showQueryResult(item)"
         >
-          <IconTable class="w-4 inline-block mr-2" />
+          <IconSave class="w-3 inline-block mr-2" />
           <span>
             {{ item.name }}
           </span>
@@ -29,7 +29,7 @@ import { useSavedStore } from "../../stores/saved";
 import { useSqlStore } from "../../stores/sql";
 import CollapsablePanel from "../CollapsablePanel.vue";
 import IconClose from "../icons/IconClose.vue";
-import IconTable from "../icons/IconTable.vue";
+import IconSave from "../icons/IconSave.vue";
 const store = useSavedStore();
 const sqlStore = useSqlStore();
 const title = computed(() => `SAVED (${store.savedQueriesCount})`);

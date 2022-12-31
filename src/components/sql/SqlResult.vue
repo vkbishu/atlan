@@ -39,10 +39,10 @@
 <script setup>
 import { ref, computed, watch } from "vue";
 import Paginate from "vuejs-paginate-next";
-import Table from "./Table.vue";
+import Table from "../Table.vue";
 import SqlFilter from "./SqlFilter.vue";
-import { useSqlStore } from "../stores/sql";
-import usePagination from "../composables/pagination";
+import { useSqlStore } from "../../stores/sql";
+import usePagination from "../../composables/pagination";
 
 const store = useSqlStore();
 const visibleColumns = ref([]);
@@ -73,6 +73,7 @@ const tableResults = computed(() => {
     return store.results;
   }
 
+  // eslint-disable-next-line no-unused-vars
   return store.results.filter((item) => {
     const statement = `item.${filterValue.value.column} ${filterValue.value.operation} '${filterValue.value.term}'`;
     return eval(statement);

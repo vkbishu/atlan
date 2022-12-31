@@ -139,12 +139,12 @@ import {
   TransitionChild,
 } from "@headlessui/vue";
 import { sql } from "@codemirror/lang-sql";
-import { useSqlStore } from "../stores/sql";
-import { useSavedStore } from "../stores/saved";
-import Button from "./Button.vue";
-import IconHistory from "./icons/IconHistory.vue";
-import IconPlay from "./icons/IconPlay.vue";
-import BaseInput from "./BaseInput.vue";
+import { useSqlStore } from "../../stores/sql";
+import { useSavedStore } from "../../stores/saved";
+import Button from "../Button.vue";
+import IconHistory from "../icons/IconHistory.vue";
+import IconPlay from "../icons/IconPlay.vue";
+import BaseInput from "../BaseInput.vue";
 const extensions = [sql()];
 const store = useSqlStore();
 const { saveQuery } = useSavedStore();

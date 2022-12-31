@@ -36,12 +36,12 @@
 
 <script setup>
 import { ref, watch } from "vue";
-import IconSearch from "./icons/IconSearch.vue";
-import IconColumn from "./icons/IconColumn.vue";
+import IconSearch from "../icons/IconSearch.vue";
+import IconColumn from "../icons/IconColumn.vue";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
-import ChoiceList from "./ChoiceList.vue";
-import BaseSelect from "./BaseSelect.vue";
-import BaseInput from "./BaseInput.vue";
+import ChoiceList from "../ChoiceList.vue";
+import BaseSelect from "../BaseSelect.vue";
+import BaseInput from "../BaseInput.vue";
 const props = defineProps({
   /**
    *  columns = [{text: "choice text", value: "value"}]
